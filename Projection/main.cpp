@@ -287,11 +287,12 @@ void MainWindow::OnTimer(WPARAM wParam, LPARAM lParam)
 
 				{
 					// Projection
-					Vector uv = (end - start).GetNormalize();
-					Vector u = Point - start;
-					Vector projV = uv * (u.Dot(uv));
-					Vector projectedPoint = start + projV;
-					float distance = (projectedPoint - Point).Norm();
+					Vector unitv = (end - start).GetNormalize();		// 점과 점을 빼 벡터를 만들고 벡터의 길이를 1로 만든다.
+					Vector u = Point - start;							// 목표와 시작점을 빼 그 사이를 잇는 벡터를 만든다.
+					Vector projV = unitv * (u.Dot(unitv));				// 만들어진 벡터를 평면의 단위 벡터와 내적하여 길이를 구한다.
+																		// 이후 방향성을 추가하여 벡터로 만든다.
+					Vector projectedPoint = start + projV;				// 투영 벡터 + 시작점 = 투영된 점의 위치
+					// float distance = (projectedPoint - Point).Norm();
 
 					color = RGB(255, 0, 255);
 					for(auto const &v : Circle)
