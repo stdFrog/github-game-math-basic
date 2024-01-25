@@ -292,7 +292,7 @@ void MainWindow::OnTimer(WPARAM wParam, LPARAM lParam)
 					Vector projV = unitv * (u.Dot(unitv));				// 만들어진 벡터를 평면의 단위 벡터와 내적하여 길이를 구한다.
 																		// 이후 방향성을 추가하여 벡터로 만든다.
 					Vector projectedPoint = start + projV;				// 투영 벡터 + 시작점 = 투영된 점의 위치
-					// float distance = (projectedPoint - Point).Norm();
+					float distance = (projectedPoint - Point).Norm();
 
 					color = RGB(255, 0, 255);
 					for(auto const &v : Circle)
